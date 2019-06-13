@@ -1,0 +1,172 @@
+<!-- Four Year Plan Input Card -->
+<div id="main-card"
+     class="card border-primary container mx-auto w-100">
+    <img id="logo"
+	 class="card-img-top mx-auto m-1"
+	 src="https://s2.smu.edu/~mirfan/logo_blue.png"
+	 alt="Advising AI"/>
+    <div class="card-body">
+	<h5 class="text-center"
+		   style="font-size:small">
+	    Automatically Create 4-Year Plan
+	</h5>
+	<!-- Majors/Minors -->
+	<div *ngFor="let degree of fyp.majors; let i = index; trackBy: trackByIndex">
+	    <th class="text-left pt-2">Major/Minor {{i+1}}</th>
+	    <div class="row">
+		<input id="degree"
+		       class="form-control col-lg-11 col-xs-auto"
+		       [(ngModel)]="this.fyp.majors[i]"
+		       (input)="this.newDegree()"
+		       name="this.fyp.majors[i]"
+		       type="text"
+		       list="degrees" />
+		<datalist id="degrees">
+		    <option *ngFor="let degree of majors">
+			{{degree}}
+		    </option>
+		</datalist>
+		<button class="btn btn-outline-danger col-1"
+			title="Delete {{degree}}"
+			(click)="removeDegree(this.fyp.majors[i])"><span class="text-center">⨯</span></button>
+	    </div>
+	</div>
+	<p *ngIf="!this.validMajor"
+	   class="invalid">
+	    Please enter a valid major
+	</p>
+	<!-- Advanced Card -->
+	<div id="accordion">
+	    <h5 class="text-center mt-2">
+		<button class="btn collapsed"
+			       style="color:grey"
+			       data-toggle="collapse"
+			       data-target="#collapse"
+			       aria-expanded="false"
+			       aria-controls="collapse"
+			       (click)="this.toggleTriangle()">
+		    {{this.expandTriangle}} More Options
+		</button>
+	    </h5>
+	    <div id="collapse"
+		 class="card-body collapse m-2"
+		 aria-labelledby="heading"
+		 data-parent="#accordion">
+		<!-- Advanced Settings -->
+		<div class="row">
+		    <table class="col-lg-6 col-xs-auto">
+			<tr>
+			    <th>Start Year</th>
+			</tr>
+			<tr>
+			    <td class="mt-1">
+				<input [(ngModel)]="this.fyp.UC"
+				       (input)="this.checkYear()"
+				       name="this.fyp.UC"
+				       class="form-control mx-auto"
+				       style="width:100%"
+				       type="number" />
+			    </td>
+			</tr>
+			<tr *ngIf="!validUC">
+			    <td class="invalid">
+				{{this.fyp.UC}} is not a valid start year
+			    </td>
+			</tr>
+		    </table>
+		    <table class="col-auto mx-auto">
+			<tr>
+			    <th colspan="2" class="pt-1">Summer Classes?</th>
+
+			</tr>
+			<tr *ngIf="fyp.summer">
+			    <td>
+				<button class="btn btn-primary m-1">Yes</button>
+			    </td>
+			    <td>
+				<button (click)="toggleSummerClasses()"
+					class="btn btn-secondary m-1">No</button>
+			    </td>
+			</tr>
+			<tr *ngIf="!fyp.summer">
+			    <td>
+				<button (click)="toggleSummerClasses()"
+					class="btn btn-secondary m-1">Yes</button>
+			    </td>
+			    <td>
+				<button class="btn btn-primary  m-1">No</button>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+		<!-- AP Courses -->
+		<th>AP Courses Taken</th>
+		<input class="form-control mb-2 mx-auto"
+		       [(ngModel)]="APclass"
+		       name="APclass"
+		       (input)="addAP()"
+		       list="APdataList"
+		       style="width:100%" />
+		<datalist id="APdataList">
+		    <option *ngFor="let ap of APs">
+			{{ap}}{{this.INVISIBLE_SEP}}
+		    </option>
+		</datalist>
+		<button *ngFor="let ap of this.fyp.APs"
+			(click)="removeAP(ap)"
+			class="btn btn-sm btn-outline-primary m-1 AP">
+		    {{ap}} <span style="color:red">⨯</span>
+		</button>
+		<!-- Min and Max Hours per Semester -->
+		<div class="row">
+		    <table class="col-lg-6 col-xs-auto mx-auto">
+			<tr>
+			    <th>Minimum Hours/Semester</th>
+			</tr>
+			<tr>
+			    <td class="p-2">
+				<input [(ngModel)]="this.fyp.min_hrs"
+				       (input)="this.checkMin(); this.checkMax()"
+				       name="this.fyp.min_hrs"
+				       class="form-control mx-auto"
+				       style="width:100%"
+				       type="number" />
+			    </td>
+			</tr>
+			<tr *ngIf="this.invalidMin.length > 0">
+			    <td class="invalid">
+				{{this.invalidMin}}
+			    </td>
+			</tr>
+		    </table>
+		    <table class="col-lg-6 col-xs-auto mx-auto">
+			<tr>
+			    <th>Maximum Hours/Semester</th>
+			</tr>
+			<tr>
+			    <td class="p-2">
+				<input [(ngModel)]="this.fyp.max_hrs"
+				       (input)="this.checkMax(); this.checkMin()"
+				       name="this.fyp.max_hrs"
+				       class="form-control mx-auto"
+				       style="width:100%"
+				       type="number" />
+			    </td>
+			</tr>
+			<tr *ngIf="this.invalidMax.length > 0" >
+			    <td class="invalid">
+				{{this.invalidMax}}
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </div>
+    <!-- Submit Button -->
+    <button class="btn btn-success mx-auto mb-2 mt-1"
+	    (click)="submit()"
+	    style="width:100%">
+	S U B M I T
+    </button>
+</div>

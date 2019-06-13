@@ -1,0 +1,64 @@
+{
+    "id": 12345678,
+    "creation_time": "dtime",
+    "user": "Bob Bill",
+    "majors": ["CHEMISTRY"],
+    "UC": 2012,
+    "APs": ["US History", "English Language and Composition", "World History"],
+    "Summer School": true,
+    "max_years": 4,
+    "max_hrs/semester": 18,
+    "min_hrs/semester": 12,
+    "front load": true,
+    "mid load": true,
+    "back load": false,
+    "Semesters": [ {
+        "Semester_1": {
+            "term and year": "FALL 2015",
+            "hours": 18,
+            "Courses": ["BIOL 1401", "CHEM 1113", "CHEM 1303", "DISC 1313", "MATH 1337", "PRW 1101", "PSYC 1300"]
+        },
+        "Semester_2": {
+            "term and year": "SPRING 2016",
+            "hours": 18,
+            "Courses": ["BIOL 1402", "CHEM 1114", "CHEM 1304", "CSE 1341", "KNW 2300", "MATH 1338", "PRW 2117"]
+        },
+        "Semester_3": {
+            "term and year": "FALL 2016",
+            "hours": 17,
+            "Courses": ["BIOL 3304", "CHEM 3117", "CHEM 3371", "MATH 2339", "PHYS 1105", "PHYS 1307", "STAT 2331"]
+        },
+        "Semester_4": {
+            "term and year": "SPRING 2017",
+            "hours": 17,
+            "Courses": ["BIOL 3350", "CHEM 3118", "CHEM 3372", "MATH 2343", "PHIL 1318", "PHYS 1106", "PHYS 1308"]
+        },
+        "Semester_5": {
+            "term and year": "SUMMER 2017",
+            "hours": 6,
+            "Courses": ["CCPA 4310", "JOUR 3345"]
+        },  
+        "Semester_6": {
+            "term and year": "FALL 2017",
+            "hours": 17,
+            "Courses": ["ARHS 1301", "CHEM 3351", "CHEM 5192", "CHEM 5310", "CHEM 5383", "LATN 1401"]
+        },
+        "Semester_7": {
+            "term and year": "SPRING 2018",
+            "hours": 12,
+            "Courses": ["CEHM 5185", "CHEM 5188", "CHEM 5384", "CHEM 5398", "LATN 1402"]
+        },
+        "Semester_8": {
+            "term and year": "FALL 2018",
+            "hours": 12,
+            "Courses": ["BIOL 4319", "CHEM 4397", "CHEM 5392", "PHIL 1301"]
+        },
+        "Semester_9": {
+            "term and year": "SPRING 2019",
+            "hours": 12,
+            "Courses": ["CHEM 5486", "EMIS 1300", "JOUR 2302", "PRW 2122", "PRW 2132"]
+        }         
+    }
+		 ],
+    "report": "file.xlsx"
+}
