@@ -150,6 +150,9 @@ export class FourYearInputComponent implements OnInit {
     
     submit(){
 	if(this.validUC && this.checkMajors() && !this.invalidMax && !this.invalidMin){
+	    this.fyp.id = 0;
+	    this.fyp.name = "Bob Bill";
+	    this.fyp.creation_time = (new Date()).getTime();
 	    console.log(this.fyp);
 	}
     }
